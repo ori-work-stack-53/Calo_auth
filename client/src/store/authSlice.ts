@@ -357,6 +357,11 @@ const authSlice = createSlice({
         state.isAuthenticated = true;
         state.error = null;
         console.log("✅ Sign in state updated");
+        console.log("👤 User data stored in Redux:", JSON.stringify(action.payload.user, null, 2));
+        console.log("🔑 Admin fields:", {
+          is_admin: action.payload.user?.is_admin,
+          is_super_admin: action.payload.user?.is_super_admin
+        });
       })
       .addCase(signIn.rejected, (state, action) => {
         state.isLoading = false;

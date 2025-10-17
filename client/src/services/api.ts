@@ -188,6 +188,12 @@ export const authAPI = {
       if (response.data.success && response.data.token) {
         await setStoredToken(response.data.token);
         console.log("✅ Signin successful, token stored");
+        console.log("📦 Raw signin response:", JSON.stringify(response.data, null, 2));
+        console.log("👤 User from signin:", JSON.stringify(response.data.user, null, 2));
+        console.log("🔑 Admin fields from API:", {
+          is_admin: response.data.user?.is_admin,
+          is_super_admin: response.data.user?.is_super_admin
+        });
         return response.data;
       }
 

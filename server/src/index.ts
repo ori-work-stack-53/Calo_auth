@@ -32,6 +32,7 @@ import { schemaValidationRoutes } from "./routes/schema-validation";
 import { authenticateToken, AuthRequest } from "./middleware/auth";
 import enhancedMenuRouter from "./routes/enhancedMenu";
 import adminRoutes from "./routes/admin";
+import { promoteAdminRoutes } from "./routes/promote-admin";
 
 // Load environment variables
 dotenv.config();
@@ -193,6 +194,7 @@ apiRouter.use("/", achievementsRouter);
 apiRouter.use("/meal-completions", mealCompletionRouter);
 apiRouter.use("/schema", schemaValidationRoutes);
 apiRouter.use("/menu/enhanced", enhancedMenuRouter);
+apiRouter.use("/", promoteAdminRoutes); // One-time admin promotion endpoint
 
 // Add a test endpoint to manually trigger daily goals creation
 apiRouter.post("/test/create-daily-goals", async (req, res) => {
